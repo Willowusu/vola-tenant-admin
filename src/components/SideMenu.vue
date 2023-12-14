@@ -36,7 +36,7 @@
 
             <div class="text-gray-600">
                 <li v-for="(menuItem, index) in menuList" :key="index" class="py-2">
-                  {{ menuItem.name }}
+                  <router-link to={{ menuItem.url }}>{{ menuItem.name }}</router-link>
                 </li>
             </div>
           </div>
