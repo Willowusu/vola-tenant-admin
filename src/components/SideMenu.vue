@@ -36,7 +36,7 @@
 
             <div class="text-gray-600">
                 <li v-for="(menuItem, index) in menuList" :key="index" class="py-2">
-                  <router-link to={{ menuItem.url }}>{{ menuItem.name }}</router-link>
+                  <router-link :to=menuItem.url>{{menuItem.name}}</router-link>
                 </li>
             </div>
           </div>
@@ -48,6 +48,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import type { object } from "yup";
 
 export default defineComponent({
   name: "side-menu",

@@ -22,20 +22,24 @@
     components: {
       SideMenu
     },
-  data() {
+    data() {
     return {
       // Your data that you want to pass to the side-menu component
       yourMenuListData: [
-        { name: "Individuals", url: "/compliance-individuals" },
-        { name: "Businesses", url: "/compliance-businesses" },
+        { name: "Payment Gateway Setup", url: "/payment-gateway-setup" },
+        { name: "Payout Gateway Setup", url: "/payout-gateway-setup" },
+        { name: "Mailers", url: "/mailers" },
+        { name: "System User Management", url: "/system-user-management" },
+        { name: "Logs", url: "/logs" },
+        { name: "Tenant Config", url: "/tenant-config" },
+        { name: "Push Notifications", url: "/push-notifications" },
+        { name: "App Versioning", url: "/app-version" },
       ],
     };
   },
   });
   </script>
-  
-  
 
 
-  
 
+  

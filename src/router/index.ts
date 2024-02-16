@@ -46,6 +46,39 @@ const routes: Array<RouteRecordRaw> = [
 
         },
       },
+
+
+      //////////////////////////////////////////////////
+      //OPERATIONS
+      //////////////////////////////////////////////////
+      {
+        path: "/operations",
+        name: "operations",
+        component: () =>
+          import("@/views/Operations.vue"),
+        meta: {
+          pageTitle: "Operations",
+          breadcrumbs: ["Operations"],
+
+        },
+        children: [
+           {
+        path: "/transactions",
+        name: "transactions",
+        component: () =>
+          import("@/components/Operations/Transactions.vue"),
+        meta: {
+          pageTitle: "Transactions",
+          breadcrumbs: ["Operations", "Transactions"],
+        },
+      },
+        ],
+      },
+      //////////////////////////////////////////////////
+
+      //////////////////////////////////////////////////
+      //FINANCE
+      //////////////////////////////////////////////////
       {
         path: "/finance",
         name: "finance",
@@ -56,18 +89,242 @@ const routes: Array<RouteRecordRaw> = [
           breadcrumbs: ["Finance"],
 
         },
-      },
-      {
-        path: "/management",
-        name: "management",
+         children: [
+           {
+        path: "/charges",
+        name: "charges",
         component: () =>
-          import("@/views/Management.vue"),
+          import("@/components/Finance/Charges.vue"),
         meta: {
-          pageTitle: "Management",
-          breadcrumbs: ["Management"],
-
+          pageTitle: "Charges",
+          breadcrumbs: ["Finance", "Charges"],
         },
       },
+      {
+        path: "/rates",
+        name: "rates",
+        component: () =>
+          import("@/components/Finance/Rates.vue"),
+        meta: {
+          pageTitle: "Rates",
+          breadcrumbs: ["Finance", "Rates"],
+        },
+      },
+      {
+        path: "/payment-gateways",
+        name: "payment-gateways",
+        component: () =>
+          import("@/components/Finance/PaymentGateways.vue"),
+        meta: {
+          pageTitle: "Payment Gateways",
+          breadcrumbs: ["Finance", "Payment Gateways"],
+        },
+      },
+      {
+        path: "/payout-gateways",
+        name: "payout-gateways",
+        component: () =>
+          import("@/components/Finance/PayoutGateways.vue"),
+        meta: {
+          pageTitle: "Payout Gateways",
+          breadcrumbs: ["Finance", "Payout Gateways"],
+        },
+      },
+      {
+        path: "/balance",
+        name: "balance",
+        component: () =>
+          import("@/components/Finance/Balance.vue"),
+        meta: {
+          pageTitle: "Balance",
+          breadcrumbs: ["Finance", "Balance"],
+        },
+      },
+      {
+        path: "/referral-program",
+        name: "referral-program",
+        component: () =>
+          import("@/components/Finance/ReferralProgram.vue"),
+        meta: {
+          pageTitle: "Referral Program",
+          breadcrumbs: ["Finance", "Referral Program"],
+        },
+      },
+      {
+        path: "/reward-management",
+        name: "reward-management",
+        component: () =>
+          import("@/components/Finance/RewardManagement.vue"),
+        meta: {
+          pageTitle: "Reward Management",
+          breadcrumbs: ["Finance", "Reward Management"],
+        },
+      },
+        ],
+      },
+     
+      //////////////////////////////////////////////////
+
+      //////////////////////////////////////////////////
+      //Customer Management
+      //////////////////////////////////////////////////
+      {
+        path: "/customer-management",
+        name: "customer-management",
+        component: () =>
+          import("@/views/CustomerManagement.vue"),
+        meta: {
+          pageTitle: "Customer Management",
+          breadcrumbs: ["Customer Management"],
+
+        },
+        children: [
+           {
+        path: "/individuals",
+        name: "individuals",
+        component: () =>
+          import("@/components/CustomerManagement/Individuals.vue"),
+        meta: {
+          pageTitle: "Customer Management",
+          breadcrumbs: ["Customer Management", "Individuals"],
+        },
+      },
+      {
+        path: "/businesses",
+        name: "businesses",
+        component: () =>
+          import("@/components/CustomerManagement/Businesses.vue"),
+        meta: {
+          pageTitle: "Customer Management",
+          breadcrumbs: ["Customer Management", "Businesses"],
+        },
+      },
+      {
+        path: "/beneficiaries",
+        name: "beneficiaries",
+        component: () =>
+          import("@/components/CustomerManagement/Beneficiaries.vue"),
+        meta: {
+          pageTitle: "Customer Management",
+          breadcrumbs: ["Customer Management", "Beneficiaries"],
+        },
+      },
+      {
+        path: "/referrals",
+        name: "referrals",
+        component: () =>
+          import("@/components/CustomerManagement/Referrals.vue"),
+        meta: {
+          pageTitle: "Customer Management",
+          breadcrumbs: ["Customer Management", "Referrals"],
+        },
+      },
+      
+        ],
+      },
+      //////////////////////////////////////////////////
+
+      //////////////////////////////////////////////////
+      //ADMIN
+      //////////////////////////////////////////////////
+      {
+        path: "/admin",
+        name: "admin",
+        component: () =>
+          import("@/views/Admin.vue"),
+        meta: {
+          pageTitle: "Admin",
+          breadcrumbs: ["Admin"],
+
+        },
+        children: [
+           {
+        path: "/payment-gateway-setup",
+        name: "payment-gateway-setup",
+        component: () =>
+          import("@/components/Admin/PaymentGatewaySetup.vue"),
+        meta: {
+          pageTitle: "Payment Gateway Setup",
+          breadcrumbs: ["Admin", "PaymentGatewaySetup"],
+        },
+      },
+           {
+        path: "/payout-gateway-setup",
+        name: "payout-gateway-setup",
+        component: () =>
+          import("@/components/Admin/PayoutGatewaySetup.vue"),
+        meta: {
+          pageTitle: "Payout Gateway Setup",
+          breadcrumbs: ["Admin", "PayoutGatewaySetup"],
+        },
+      },
+           {
+        path: "/mailers",
+        name: "mailers",
+        component: () =>
+          import("@/components/Admin/Mailers.vue"),
+        meta: {
+          pageTitle: "Mailers",
+          breadcrumbs: ["Admin", "Mailers"],
+        },
+      },
+      {
+        path: "/system-user-management",
+        name: "system-user-management",
+        component: () =>
+          import("@/components/Admin/SystemUserManagement.vue"),
+        meta: {
+          pageTitle: "System User Management",
+          breadcrumbs: ["Admin", "System User Management"],
+        },
+      },
+      {
+        path: "/logs",
+        name: "logs",
+        component: () =>
+          import("@/components/Admin/Logs.vue"),
+        meta: {
+          pageTitle: "Logs",
+          breadcrumbs: ["Admin", "Logs"],
+        },
+      },
+      {
+        path: "/tenant-config",
+        name: "tenant-config",
+        component: () =>
+          import("@/components/Admin/TenantConfig.vue"),
+        meta: {
+          pageTitle: "TenantConfig",
+          breadcrumbs: ["Admin", "Tenant Config"],
+        },
+      },
+      {
+        path: "/push-notifications",
+        name: "push-notifications",
+        component: () =>
+          import("@/components/Admin/PushNotifications.vue"),
+        meta: {
+          pageTitle: "Push Notifications",
+          breadcrumbs: ["Admin", "Push Notifications"],
+        },
+      },
+      {
+        path: "/app-version",
+        name: "app-version",
+        component: () =>
+          import("@/components/Admin/AppVersion.vue"),
+        meta: {
+          pageTitle: "AppVersion",
+          breadcrumbs: ["Admin", "App Version"],
+        },
+      },
+        ],
+      },
+      //////////////////////////////////////////////////
+
+      //////////////////////////////////////////////////
+      //COMPLIANCE
+      //////////////////////////////////////////////////
       {
         path: "/compliance",
         name: "compliance",
@@ -78,7 +335,34 @@ const routes: Array<RouteRecordRaw> = [
           breadcrumbs: ["Compliance"],
 
         },
+        children: [
+           {
+        path: "/compliance-individuals",
+        name: "compliance-individuals",
+        component: () =>
+          import("@/components/Compliance/Individuals.vue"),
+        meta: {
+          pageTitle: "Individuals",
+          breadcrumbs: ["Compliance", "Individuals"],
+        },
       },
+      {
+        path: "/compliance-businesses",
+        name: "compliance-businesses",
+        component: () =>
+          import("@/components/Compliance/Businesses.vue"),
+        meta: {
+          pageTitle: "Business",
+          breadcrumbs: ["Compliance", "Businesses"],
+        },
+      },
+        ],
+      },
+      //////////////////////////////////////////////////
+
+      //////////////////////////////////////////////////
+      //RISK
+      //////////////////////////////////////////////////      
       {
         path: "/risk",
         name: "risk",
@@ -89,29 +373,101 @@ const routes: Array<RouteRecordRaw> = [
           breadcrumbs: ["Risk"],
 
         },
-      },
-      {
-        path: "/communication",
-        name: "communication",
+         children: [
+           {
+        path: "/risk-individuals",
+        name: "risk-individuals",
         component: () =>
-          import("@/views/Communication.vue"),
+          import("@/components/Risk/Individuals.vue"),
         meta: {
-          pageTitle: "Communication",
-          breadcrumbs: ["Communication"],
-
+          pageTitle: "Individuals",
+          breadcrumbs: ["Risk", "Individuals"],
         },
       },
       {
-        path: "/settings",
-        name: "settings",
+        path: "/risk-businesses",
+        name: "risk-businesses",
         component: () =>
-          import("@/views/Settings.vue"),
+          import("@/components/Risk/Businesses.vue"),
         meta: {
-          pageTitle: "Settings",
-          breadcrumbs: ["Settings"],
-
+          pageTitle: "Businesses",
+          breadcrumbs: ["Risk", "Businesses"],
         },
       },
+        ],
+      },
+      //////////////////////////////////////////////////
+
+      //////////////////////////////////////////////////
+      //Payment methods
+      //////////////////////////////////////////////////
+      {
+        path: "/payment-methods",
+        name: "payment-methods",
+        component: () =>
+          import("@/views/PaymentMethods.vue"),
+        meta: {
+          pageTitle: "Payment Methods",
+          breadcrumbs: ["Payment Methods"],
+
+        },
+        children: [
+           {
+        path: "/cards",
+        name: "cards",
+        component: () =>
+          import("@/components/PaymentMethods/Cards.vue"),
+        meta: {
+          pageTitle: "Cards",
+          breadcrumbs: ["Payment Methods", "Cards"],
+        },
+      },
+      {
+        path: "/ach",
+        name: "ach",
+        component: () =>
+          import("@/components/PaymentMethods/ACH.vue"),
+        meta: {
+          pageTitle: "ACH",
+          breadcrumbs: ["Payment Methods", "ACH"],
+        },
+      },
+        ],
+      },
+
+      //////////////////////////////////////////////////
+
+      //////////////////////////////////////////////////
+      //TRANSACTION MONITORING
+      //////////////////////////////////////////////////
+      {
+        path: "/transaction-monitoring",
+        name: "transaction-monitoring",
+        component: () =>
+          import("@/views/TransactionMonitoring.vue"),
+        meta: {
+          pageTitle: "Transaction Monitoring",
+          breadcrumbs: ["Transaction Monitoring"],
+
+        },
+        children: [
+           {
+        path: "/monitored-transactions",
+        name: "monitored-transactions",
+        component: () =>
+          import("@/components/TransactionMonitoring/MonitoredTransactions.vue"),
+        meta: {
+          pageTitle: "Monitored Transactions",
+          breadcrumbs: ["Transaction Monitoring", "Monitored Transactions"],
+        },
+      },
+        ],
+      },
+      //////////////////////////////////////////////////
+
+
+
+
 
 
 

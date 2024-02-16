@@ -6,7 +6,7 @@
     <div class="card-header border-0">
       <!--begin::Card title-->
       <div class="card-title">
-        <h2>Invoices</h2>
+        <h2>Businesses</h2>
       </div>
       <!--end::Card title-->
 

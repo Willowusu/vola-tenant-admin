@@ -34,14 +34,26 @@ const MainMenuConfig: Array<MenuItem> = [
         bootstrapIcon: "bi-app-indicator",
       },
       {
+        heading: "Operations",
+        route: "/operations",
+        keenthemesIcon: "element-11",
+        bootstrapIcon: "bi-app-indicator",
+      },
+      {
         heading: "Finance",
         route: "/finance",
         keenthemesIcon: "element-11",
         bootstrapIcon: "bi-app-indicator",
       },
       {
-        heading: "Management",
-        route: "/management",
+        heading: "Customer Management",
+        route: "/customer-management",
+        keenthemesIcon: "element-11",
+        bootstrapIcon: "bi-app-indicator",
+      },
+      {
+        heading: "Admin",
+        route: "/admin",
         keenthemesIcon: "element-11",
         bootstrapIcon: "bi-app-indicator",
       },
@@ -57,15 +69,16 @@ const MainMenuConfig: Array<MenuItem> = [
         keenthemesIcon: "element-11",
         bootstrapIcon: "bi-app-indicator",
       },
+      
       {
-        heading: "Communication",
-        route: "/communication",
+        heading: "Payment Methods",
+        route: "/payment-methods",
         keenthemesIcon: "element-11",
         bootstrapIcon: "bi-app-indicator",
-      },
+      }, 
       {
-        heading: "Settings",
-        route: "/settings",
+        heading: "Transaction Monitoring",
+        route: "/transaction-monitoring",
         keenthemesIcon: "element-11",
         bootstrapIcon: "bi-app-indicator",
       }

@@ -4,7 +4,7 @@
 <SideMenu :menuList="yourMenuListData"></SideMenu>
 
   <div class="flex-lg-row-fluid ms-lg-15">
-    TESTING CHANGING AREA
+    <router-view></router-view>
   </div>
 </div>
 
@@ -26,8 +26,13 @@
     return {
       // Your data that you want to pass to the side-menu component
       yourMenuListData: [
-        {name: "Transactions", url: "/transactions"},
-        {name: "Live Transactions", url: "/live-transactions"}
+        {name: "Charges", url: "/charges"},
+        {name: "Rates", url: "/rates"},
+        {name: "Payment Gateways", url: "/payment-gateways"},
+        {name: "Payout Gateways", url: "/payout-gateways"},
+        {name: "Balance", url: "/balance"},
+        {name: "Referral Program", url: "/referral-program"},
+        {name: "Reward Management", url: "/reward-management"},
       ],
     };
   }

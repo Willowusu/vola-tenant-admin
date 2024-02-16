@@ -26,8 +26,7 @@
     return {
       // Your data that you want to pass to the side-menu component
       yourMenuListData: [
-        { name: "Individuals", url: "/compliance-individuals" },
-        { name: "Businesses", url: "/compliance-businesses" },
+        { name: "Monitored Transactions", url: "/monitored-transactions" },
       ],
     };
   },

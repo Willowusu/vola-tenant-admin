@@ -15,7 +15,7 @@
   import SideMenu from "@/components/SideMenu.vue"
   
   export default defineComponent({
-    name: "finance-view",
+    name: "operations-view",
     props: {
       cardClasses: String,
     },
@@ -26,8 +26,7 @@
     return {
       // Your data that you want to pass to the side-menu component
       yourMenuListData: [
-        { name: "Individuals", url: "/compliance-individuals" },
-        { name: "Businesses", url: "/compliance-businesses" },
+        { name: "Transactions", url: "/transactions" },
       ],
     };
   },
