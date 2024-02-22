@@ -15,25 +15,6 @@ const routes: Array<RouteRecordRaw> = [
       middleware: "auth",
     },
     children: [
-      {
-        path: "/dashboard",
-        name: "dashboard",
-        component: () => import("@/views/Dashboard.vue"),
-        meta: {
-          pageTitle: "Dashboard",
-          breadcrumbs: ["Dashboards"],
-        },
-      },
-      {
-        path: "/builder",
-        name: "builder",
-        component: () => import("@/views/LayoutBuilder.vue"),
-        meta: {
-          pageTitle: "Layout Builder",
-          breadcrumbs: ["Layout"],
-        },
-      },
-
       //custom routes
       {
         path: "/reports",
@@ -70,6 +51,15 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
           pageTitle: "Transactions",
           breadcrumbs: ["Operations", "Transactions"],
+        },
+      },
+      {
+        path: "/transaction-details/:id",
+        name: "transactionDetails",
+        component: () => import("@/components/Operations/TransactionDetails.vue"),
+        meta: {
+          pageTitle: "Transaction Details",
+          breadcrumbs: ["Operations", "Transaction Details"],
         },
       },
         ],
