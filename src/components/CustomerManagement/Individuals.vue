@@ -192,7 +192,7 @@ export default defineComponent({
     const fetchData = async () => {
       try {
         const response = await axios.post(
-          "https://38.242.248.142:5000/tenant-customers"
+          import.meta.env.SERVER_URL +  "/tenant-customers"
         );
         tableData1.value = response.data.data.rows; // Assuming API response is an array of objects matching your table structure
       } catch (error) {
