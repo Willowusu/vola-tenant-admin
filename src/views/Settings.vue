@@ -29,7 +29,7 @@
         { name: "Rates", url: "/rates" },
         { name: "Threshold Limit", url: "/threshold-limit" },
         { name: "Risk Score", url: "/risk-score" },
-        { name: "App  Version", url: "/app-version" },
+        { name: "Application Management", url: "/app-management" },
         { name: "Payment Gateways", url: "/payment-gateways" },
         { name: "Payout Partners", url: "/payout-partners" },
         { name: "Mailers", url: "/mailers" },

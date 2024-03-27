@@ -299,13 +299,13 @@ const routes: Array<RouteRecordRaw> = [
         },
       },
       {
-        path: "/app-version",
-        name: "app-version",
+        path: "/app-management",
+        name: "app-management",
         component: () =>
-          import("@/components/Admin/AppVersion.vue"),
+          import("@/components/Admin/AppManagement.vue"),
         meta: {
-          pageTitle: "AppVersion",
-          breadcrumbs: ["Admin", "App Version"],
+          pageTitle: "AppManagement",
+          breadcrumbs: ["Admin", "App Management"],
         },
       },
         ],

@@ -29,11 +29,11 @@
         { name: "Payment Gateway Setup", url: "/payment-gateway-setup" },
         { name: "Payout Gateway Setup", url: "/payout-gateway-setup" },
         { name: "Mailers", url: "/mailers" },
-        { name: "System User Management", url: "/system-user-management" },
+        { name: "User Management", url: "/system-user-management" },
         { name: "Logs", url: "/logs" },
         { name: "Tenant Config", url: "/tenant-config" },
         { name: "Push Notifications", url: "/push-notifications" },
-        { name: "App Versioning", url: "/app-version" },
+        { name: "Application Management", url: "/app-management" },
       ],
     };
   },

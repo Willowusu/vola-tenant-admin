@@ -76,6 +76,7 @@ import { defineComponent, onMounted, ref } from "vue";
 import Datatable from "@/components/kt-datatable/KTDataTable.vue";
 import type { ITransaction } from "@/core/data/transactions";
 import { MenuComponent } from "@/assets/ts/components";
+import axios from "axios"; // Import Axios library
 
 
 export default defineComponent({
@@ -131,8 +132,33 @@ export default defineComponent({
 
     const fetchTransactions = async () => {
       try {
-        const response = await fetch('http://localhost:3000/transactions');
-        const transactionResponse = await response.json();
+        const response = await axios.post('https://38.242.248.142:5000/transactions', {
+          "search": "",
+          "filter": {
+            "tenantId": "b908c605-a609-4a85-8e04-77f1dd06a0f0",
+            "tenantCustomerId": "dc47a62d-8101-48aa-8545-9cfd72cdedba",
+            "tenantCountryId": "",
+            "recipientId": "",
+            "paymentPartnerId": "",
+            "payoutPartnerId": "",
+            "transactionPurposeId": "",
+            "countryPaymentMethodId": "",
+            "countryPayoutMethodId": "",
+            "paymentAccountId": "",
+            "receiptNumber": "",
+            "sendCurrency": "",
+            "receiveCurrency": "",
+            "senderName": "",
+            "senderPhone": "",
+            "senderEmail": "",
+            "recipientName": "",
+            "paymentStatus": "",
+            "payoutStatus": "",
+            "socketId": "",
+            "referralCode": ""
+          }
+        });
+        const transactionResponse = await response.data;
         if (transactionResponse.status === 'success') {
           tableData1.value = transactionResponse.data.rows;
           initTransactions.value = [...transactionResponse.data.rows];

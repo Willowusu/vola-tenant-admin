@@ -62,6 +62,8 @@ defineProps<{
   show: boolean,
 }>();
 
+const isLoading = ref(false)
+
 
 </script>
 

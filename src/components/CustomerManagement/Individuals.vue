@@ -1,14 +1,4 @@
 <template>
-  <template>
-    <button
-      class="btn btn-sm btn-primary ms-3 px-4 py-3"
-      @click="() => (show = true)"
-    >
-      <i class="ki-outline ki-plus-square fs-2"></i>
-      <span>Add Payment Method</span>
-    </button>
-  </template>
-
   <div class="mb-5 hover-scroll-x">
     <div class="d-grid">
       <div :class="`card pt-2 ${cardClasses}`">
