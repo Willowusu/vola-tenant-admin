@@ -1,3 +1,8 @@
+<style>
+.form-control {
+  width: 300px;
+}
+</style>
 <template>
   <div class="mb-5 hover-scroll-x">
     <div class="d-grid">
@@ -70,7 +75,7 @@
                   >
                     <option>....</option>
                     <option value="1">View</option>
-                    <option value="2">Update</option>
+                    <option value="2" >Update</option>
                     <option value="3">Password reset mail</option>
                     <option value="4">Reset account password</option>
                     <option value="5">Delete</option>
@@ -86,58 +91,89 @@
     </div>
   </div>
 
-  <FullModal v-model="show" width="900px" :hide-header="true">
-    <div v-if="isLoading">
-      <!-- Display a loading indicator here -->
-      Loading...
-    </div>
-    <div v-else>
-      <!--begin::Form-->
-      <div id="kt_add_payment_methods_form">
-        <!--begin::Step 1-->
-        <div class="current" data-kt-stepper-element="content">
-          <!--begin::Wrapper-->
-          <div class="w-100">
-            <!--begin::Heading-->
-            <div class="pb-5">
-              <!--begin::Title-->
-              <h2 class="fw-bold d-flex align-items-center text-dark">
-                Choose the Payment Method Type
-              </h2>
-              <!--end::Title-->
+    <div class="modal bg-white fade" tabindex="-1" id="updateCustomer">
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content shadow-none">
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
 
-              <!--begin::Notice-->
-              <div class="text-gray-400 fw-semobold fs-6">
-                How will the funds will be debited
-              </div>
-              <!--end::Notice-->
+          <!--begin::Close-->
+            <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+              <i class="ki-duotone ki-cross fs-2x"><span class="path1"></span><span class="path2"></span></i>
             </div>
-            <!--end::Heading-->
-            <div class="card">
-              <div class="card-body p-15">
-                <div class="fv-row">
-                  <div class="row"></div>
-                </div>
-              </div>
-
-              <div class="card-footer d-flex flex-end flex-row-fluid px-15">
-                <button
-                  type="button"
-                  class="btn btn-secondary me-5"
-                  data-bs-dismiss="modal"
-                  @click="() => (show = false)"
-                >
-                  Cancel
-                </button>
-              </div>
-            </div>
+          <!--end::Close-->
           </div>
-          <!--end::Wrapper-->
+
+          <div class="modal-body d-flex align-items-center justify-content-center">
+            <form :model="formData">
+              <div class="form-group my-3">
+                <label for="customerEmail">Email</label>
+                <input type="email" class="form-control form-control-solid" id="customerEmail"
+                  placeholder="" v-model="formData.email">
+              </div>
+              <div class="form-group my-3">
+                <label for="customerFirstName">First name</label>
+                <input type="text" class="form-control form-control-solid" id="customerFirstName"
+                  placeholder="Enter name of application" v-model="formData.firstName">
+              </div>
+              <div class="form-group my-3">
+                <label for="customerLastName">Last name</label>
+                <input type="text" class="form-control form-control-solid" id="customerLastName"
+                  placeholder="Enter name of application" v-model="formData.lastName">
+              </div>
+              <div class="form-group my-3">
+                <label for="customerPhone">Phone</label>
+                <input type="tel" class="form-control form-control-solid" id="customerPhone"
+                  placeholder="" v-model="formData.phone">
+              </div>
+              <div class="form-group my-3">
+                <label for="customerAddressLine1">Address line 1</label>
+                <input type="text" class="form-control form-control-solid" id="customerAddressLine1"
+                  placeholder="" v-model="formData.addressLine1">
+              </div>
+              <div class="form-group my-3">
+                <label for="customerAddressLine2">Address line 2</label>
+                <input type="text" class="form-control form-control-solid" id="customerAddressLine2"
+                  placeholder="" v-model="formData.addressLine2">
+              </div>
+              <div class="form-group my-3">
+                <label for="customerCity">City</label>
+                <input type="text" class="form-control form-control-solid" id="customerCity"
+                  placeholder="" v-model="formData.city">
+              </div>
+              <div class="form-group">
+                <label for="customerState">State</label>
+                <input type="text" class="form-control form-control-solid" id="customerState"
+                  placeholder="" v-model="formData.state">
+              </div>
+              <div class="form-group">
+                <label for="customerZipCode">Zipcode/Postcode</label>
+                <input type="text" class="form-control form-control-solid" id="customerZipCode"
+                  placeholder="" v-model="formData.zipcode">
+              </div>
+              <div class="form-group">
+                <label for="customerGender">Gender</label>
+                <select class="form-control form-control-solid" id="customerGender" v-model="formData.gender">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="customerDateOfBirth">Date of birth</label>
+                <input type="date" class="form-control form-control-solid" id="customerDateOfBirth"
+                  placeholder="" v-model="formData.dateOfBirth">
+              </div>
+            </form>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" @click="confirmSaveChanges">Save changes</button>
+          </div>
         </div>
-        <!--end::Step 1-->
       </div>
     </div>
-  </FullModal>
 </template>
 
 <script lang="ts">
@@ -145,6 +181,8 @@ import { defineComponent, ref, onMounted } from "vue";
 import axios from "axios"; // Import Axios library
 import Swal from "sweetalert2"; // Import SweetAlert library
 import Datatable from "@/components/kt-datatable/KTDataTable.vue";
+import api from "@/utils/api";
+
 
 export default defineComponent({
   name: "users-view",
@@ -186,14 +224,26 @@ export default defineComponent({
         columnLabel: "action",
       },
     ]);
+
+    const formData = ref({
+       email: "",
+      firstName: "",
+      lastName: "",
+      phone: "",
+      addressLine1: "",
+      addressLine2: "",
+      city: "",
+      state: "",
+      zipcode: "",
+      gender: "",
+      dateOfBirth: ""
+    });
     const tableData1 = ref([]); // Initialize tableData1 as an empty array
 
     // Fetch data from the API and update tableData1
     const fetchData = async () => {
       try {
-        const response = await axios.post(
-          import.meta.env.SERVER_URL +  "/tenant-customers"
-        );
+        const response = await api.post("/tenant-customers");
         tableData1.value = response.data.data.rows; // Assuming API response is an array of objects matching your table structure
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -287,8 +337,8 @@ export default defineComponent({
       });
     };
 
-    const handleUpdateUser = (customer: object) => {
-      show.value = true; // Set show variable to true to show the modalgithub
+    const handleUpdateCustomer = (customer: object) => {
+      show.value=true;// Set show variable to true to show the modal
     };
 
     // Method to handle actions based on dropdown selection
@@ -299,7 +349,7 @@ export default defineComponent({
           break;
         case "2":
           // Update action logic
-          handleUpdateUser(customer);
+          handleUpdateCustomer(customer);
           break;
         case "3":
           // Password reset mail action logic
@@ -317,15 +367,19 @@ export default defineComponent({
       }
     };
 
+    console.log(show.value)
+
     return {
       tableHeader,
       tableData1,
       handlePasswordResetMail,
       handleDeleteAccount,
+      handleUpdateCustomer,
       handleAction,
       show,
       isLoading,
-    };
+      formData,
+};
   },
 });
 </script>
