@@ -77,8 +77,7 @@
                     <option value="1">View</option>
                     <option value="2" >Update</option>
                     <option value="3">Password reset mail</option>
-                    <option value="4">Reset account password</option>
-                    <option value="5">Delete</option>
+                    <option value="4">Delete</option>
                   </select>
                 </template>
               </Datatable>
@@ -91,7 +90,7 @@
     </div>
   </div>
 
-    <div class="modal bg-white fade" tabindex="-1" id="updateCustomer">
+    <div v-if="show" class="modal bg-white fade" tabindex="-1" id="updateCustomer">
       <div class="modal-dialog modal-fullscreen">
         <div class="modal-content shadow-none">
           <div class="modal-header">
@@ -182,6 +181,7 @@ import axios from "axios"; // Import Axios library
 import Swal from "sweetalert2"; // Import SweetAlert library
 import Datatable from "@/components/kt-datatable/KTDataTable.vue";
 import api from "@/utils/api";
+import { useRouter } from 'vue-router';
 
 
 export default defineComponent({
@@ -193,6 +193,9 @@ export default defineComponent({
     Datatable,
   },
   setup() {
+    //for testing purposes
+    const tenantId = "996e2445-3eac-4e0c-94be-9c0fc241d62d";
+    const router = useRouter();
     const show = ref(false);
     const isLoading = ref(true); // Loading indicator state
 
@@ -243,7 +246,25 @@ export default defineComponent({
     // Fetch data from the API and update tableData1
     const fetchData = async () => {
       try {
-        const response = await api.post("/tenant-customers");
+        const customersFilter = {
+    search: "",
+    filter: {
+        tenantId: tenantId,
+        accountId: "",
+        sendingCountryId: "",
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        addressLine1: "",
+        addressLine2: "",
+        city: "",
+        state: "",
+        zipcode: "",
+        gender: ""
+    }
+}
+        const response = await api.post("/tenant-customers", customersFilter);
         tableData1.value = response.data.data.rows; // Assuming API response is an array of objects matching your table structure
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -267,8 +288,8 @@ export default defineComponent({
       }).then(async (result) => {
         if (result.isConfirmed) {
           try {
-            const response = await axios.post(
-              "https://38.242.248.142:5000/tenant-customers/send-password-reset-mail",
+            const response = await api.post(
+              "/tenant-customers/send-password-reset-mail",
               { email: customerEmail }
             );
             if (response.data.status === "success") {
@@ -306,8 +327,8 @@ export default defineComponent({
       }).then(async (result) => {
         if (result.isConfirmed) {
           try {
-            const response = await axios.delete(
-              `https://38.242.248.142:5000/tenant-customers/${customer.safeId}`
+            const response = await api.delete(
+              `/${customer.safeId}`
             );
             if (response.data.status === "success") {
               Swal.fire({
@@ -338,7 +359,11 @@ export default defineComponent({
     };
 
     const handleUpdateCustomer = (customer: object) => {
-      show.value=true;// Set show variable to true to show the modal
+      router.push({ name: 'update-individual', params: { id: customer.safeId }, props: { customer } });
+    };
+
+    const handleViewCustomer = (customer: object) => {
+      router.push({ name: 'view-individual', params: { id: customer.safeId }, props: { customer } });
     };
 
     // Method to handle actions based on dropdown selection
@@ -346,6 +371,7 @@ export default defineComponent({
       switch (action) {
         case "1":
           // View action logic
+          handleViewCustomer(customer)
           break;
         case "2":
           // Update action logic
@@ -356,9 +382,6 @@ export default defineComponent({
           handlePasswordResetMail(customer.email);
           break;
         case "4":
-          // Reset account password action logic
-          break;
-        case "5":
           // Delete action logic
           handleDeleteAccount(customer);
           break;
@@ -367,7 +390,6 @@ export default defineComponent({
       }
     };
 
-    console.log(show.value)
 
     return {
       tableHeader,

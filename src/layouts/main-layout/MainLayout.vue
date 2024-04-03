@@ -24,7 +24,6 @@
   </div>
   <!--end::App-->
 
-  <KTDrawers />
   <KTScrollTop />
   <KTModals />
 </template>

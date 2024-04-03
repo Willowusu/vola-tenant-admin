@@ -5,6 +5,7 @@ import {
 } from "vue-router";
 import { useAuthStore } from "@/stores/auth";
 import { useConfigStore } from "@/stores/config";
+import UpdateIndivdual from "@/components/CustomerManagement/UpdateIndividual.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -19,15 +20,12 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/reports",
         name: "reports",
-        component: () =>
-          import("@/views/Reports.vue"),
+        component: () => import("@/views/Reports.vue"),
         meta: {
           pageTitle: "Reports",
           breadcrumbs: ["Reports"],
-
         },
       },
-
 
       //////////////////////////////////////////////////
       //OPERATIONS
@@ -35,33 +33,31 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/operations",
         name: "operations",
-        component: () =>
-          import("@/views/Operations.vue"),
+        component: () => import("@/views/Operations.vue"),
         meta: {
           pageTitle: "Operations",
           breadcrumbs: ["Operations"],
-
         },
         children: [
-           {
-        path: "/transactions",
-        name: "transactions",
-        component: () =>
-          import("@/components/Operations/Transactions.vue"),
-        meta: {
-          pageTitle: "Transactions",
-          breadcrumbs: ["Operations", "Transactions"],
-        },
-      },
-      {
-        path: "/transaction-details/:id",
-        name: "transactionDetails",
-        component: () => import("@/components/Operations/TransactionDetails.vue"),
-        meta: {
-          pageTitle: "Transaction Details",
-          breadcrumbs: ["Operations", "Transaction Details"],
-        },
-      },
+          {
+            path: "/transactions",
+            name: "transactions",
+            component: () => import("@/components/Operations/Transactions.vue"),
+            meta: {
+              pageTitle: "Transactions",
+              breadcrumbs: ["Operations", "Transactions"],
+            },
+          },
+          {
+            path: "/transaction-details/:id",
+            name: "transactionDetails",
+            component: () =>
+              import("@/components/Operations/TransactionDetails.vue"),
+            meta: {
+              pageTitle: "Transaction Details",
+              breadcrumbs: ["Operations", "Transaction Details"],
+            },
+          },
         ],
       },
       //////////////////////////////////////////////////
@@ -72,87 +68,79 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/finance",
         name: "finance",
-        component: () =>
-          import("@/views/Finance.vue"),
+        component: () => import("@/views/Finance.vue"),
         meta: {
           pageTitle: "Finance",
           breadcrumbs: ["Finance"],
-
         },
-         children: [
-           {
-        path: "/charges",
-        name: "charges",
-        component: () =>
-          import("@/components/Finance/Charges.vue"),
-        meta: {
-          pageTitle: "Charges",
-          breadcrumbs: ["Finance", "Charges"],
-        },
-      },
-      {
-        path: "/rates",
-        name: "rates",
-        component: () =>
-          import("@/components/Finance/Rates.vue"),
-        meta: {
-          pageTitle: "Rates",
-          breadcrumbs: ["Finance", "Rates"],
-        },
-      },
-      {
-        path: "/payment-gateways",
-        name: "payment-gateways",
-        component: () =>
-          import("@/components/Finance/PaymentGateways.vue"),
-        meta: {
-          pageTitle: "Payment Gateways",
-          breadcrumbs: ["Finance", "Payment Gateways"],
-        },
-      },
-      {
-        path: "/payout-gateways",
-        name: "payout-gateways",
-        component: () =>
-          import("@/components/Finance/PayoutGateways.vue"),
-        meta: {
-          pageTitle: "Payout Gateways",
-          breadcrumbs: ["Finance", "Payout Gateways"],
-        },
-      },
-      {
-        path: "/balance",
-        name: "balance",
-        component: () =>
-          import("@/components/Finance/Balance.vue"),
-        meta: {
-          pageTitle: "Balance",
-          breadcrumbs: ["Finance", "Balance"],
-        },
-      },
-      {
-        path: "/referral-program",
-        name: "referral-program",
-        component: () =>
-          import("@/components/Finance/ReferralProgram.vue"),
-        meta: {
-          pageTitle: "Referral Program",
-          breadcrumbs: ["Finance", "Referral Program"],
-        },
-      },
-      {
-        path: "/reward-management",
-        name: "reward-management",
-        component: () =>
-          import("@/components/Finance/RewardManagement.vue"),
-        meta: {
-          pageTitle: "Reward Management",
-          breadcrumbs: ["Finance", "Reward Management"],
-        },
-      },
+        children: [
+          {
+            path: "/charges",
+            name: "charges",
+            component: () => import("@/components/Finance/Charges.vue"),
+            meta: {
+              pageTitle: "Charges",
+              breadcrumbs: ["Finance", "Charges"],
+            },
+          },
+          {
+            path: "/rates",
+            name: "rates",
+            component: () => import("@/components/Finance/Rates.vue"),
+            meta: {
+              pageTitle: "Rates",
+              breadcrumbs: ["Finance", "Rates"],
+            },
+          },
+          {
+            path: "/payment-gateways",
+            name: "payment-gateways",
+            component: () => import("@/components/Finance/PaymentGateways.vue"),
+            meta: {
+              pageTitle: "Payment Gateways",
+              breadcrumbs: ["Finance", "Payment Gateways"],
+            },
+          },
+          {
+            path: "/payout-gateways",
+            name: "payout-gateways",
+            component: () => import("@/components/Finance/PayoutGateways.vue"),
+            meta: {
+              pageTitle: "Payout Gateways",
+              breadcrumbs: ["Finance", "Payout Gateways"],
+            },
+          },
+          {
+            path: "/balance",
+            name: "balance",
+            component: () => import("@/components/Finance/Balance.vue"),
+            meta: {
+              pageTitle: "Balance",
+              breadcrumbs: ["Finance", "Balance"],
+            },
+          },
+          {
+            path: "/referral-program",
+            name: "referral-program",
+            component: () => import("@/components/Finance/ReferralProgram.vue"),
+            meta: {
+              pageTitle: "Referral Program",
+              breadcrumbs: ["Finance", "Referral Program"],
+            },
+          },
+          {
+            path: "/reward-management",
+            name: "reward-management",
+            component: () =>
+              import("@/components/Finance/RewardManagement.vue"),
+            meta: {
+              pageTitle: "Reward Management",
+              breadcrumbs: ["Finance", "Reward Management"],
+            },
+          },
         ],
       },
-     
+
       //////////////////////////////////////////////////
 
       //////////////////////////////////////////////////
@@ -161,55 +149,74 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/customer-management",
         name: "customer-management",
-        component: () =>
-          import("@/views/CustomerManagement.vue"),
+        component: () => import("@/views/CustomerManagement.vue"),
         meta: {
           pageTitle: "Customer Management",
           breadcrumbs: ["Customer Management"],
-
         },
         children: [
-           {
-        path: "/individuals",
-        name: "individuals",
-        component: () =>
-          import("@/components/CustomerManagement/Individuals.vue"),
-        meta: {
-          pageTitle: "Customer Management",
-          breadcrumbs: ["Customer Management", "Individuals"],
-        },
-      },
-      {
-        path: "/businesses",
-        name: "businesses",
-        component: () =>
-          import("@/components/CustomerManagement/Businesses.vue"),
-        meta: {
-          pageTitle: "Customer Management",
-          breadcrumbs: ["Customer Management", "Businesses"],
-        },
-      },
-      {
-        path: "/beneficiaries",
-        name: "beneficiaries",
-        component: () =>
-          import("@/components/CustomerManagement/Beneficiaries.vue"),
-        meta: {
-          pageTitle: "Customer Management",
-          breadcrumbs: ["Customer Management", "Beneficiaries"],
-        },
-      },
-      {
-        path: "/referrals",
-        name: "referrals",
-        component: () =>
-          import("@/components/CustomerManagement/Referrals.vue"),
-        meta: {
-          pageTitle: "Customer Management",
-          breadcrumbs: ["Customer Management", "Referrals"],
-        },
-      },
-      
+          {
+            path: "/individuals",
+            name: "individuals",
+            component: () =>
+              import("@/components/CustomerManagement/Individuals.vue"),
+            meta: {
+              pageTitle: "Customer Management",
+              breadcrumbs: ["Customer Management", "Individuals"],
+            },
+          },
+          {
+            path: "/individual/update/:id",
+            name: "update-individual",
+            component: () =>
+              import("@/components/CustomerManagement/UpdateIndividual.vue"),
+            props: true,
+            meta: {
+              pageTitle: "Customer Management",
+              breadcrumbs: ["Customer Management", "Update Individual"],
+            },
+          },
+          {
+            path: "/individuals/:id",
+            name: "view-individual",
+            component: () =>
+              import("@/components/CustomerManagement/ViewIndividual.vue"),
+            props: true,
+            meta: {
+              pageTitle: "Customer Management",
+              breadcrumbs: ["Customer Management", "View Individual"],
+            },
+          },
+          {
+            path: "/businesses",
+            name: "businesses",
+            component: () =>
+              import("@/components/CustomerManagement/Businesses.vue"),
+            meta: {
+              pageTitle: "Customer Management",
+              breadcrumbs: ["Customer Management", "Businesses"],
+            },
+          },
+          {
+            path: "/beneficiaries",
+            name: "beneficiaries",
+            component: () =>
+              import("@/components/CustomerManagement/Beneficiaries.vue"),
+            meta: {
+              pageTitle: "Customer Management",
+              breadcrumbs: ["Customer Management", "Beneficiaries"],
+            },
+          },
+          {
+            path: "/referrals",
+            name: "referrals",
+            component: () =>
+              import("@/components/CustomerManagement/Referrals.vue"),
+            meta: {
+              pageTitle: "Customer Management",
+              breadcrumbs: ["Customer Management", "Referrals"],
+            },
+          },
         ],
       },
       //////////////////////////////////////////////////
@@ -220,94 +227,87 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/admin",
         name: "admin",
-        component: () =>
-          import("@/views/Admin.vue"),
+        component: () => import("@/views/Admin.vue"),
         meta: {
           pageTitle: "Admin",
           breadcrumbs: ["Admin"],
-
         },
         children: [
-           {
-        path: "/payment-gateway-setup",
-        name: "payment-gateway-setup",
-        component: () =>
-          import("@/components/Admin/PaymentGatewaySetup.vue"),
-        meta: {
-          pageTitle: "Payment Gateway Setup",
-          breadcrumbs: ["Admin", "PaymentGatewaySetup"],
-        },
-      },
-           {
-        path: "/payout-gateway-setup",
-        name: "payout-gateway-setup",
-        component: () =>
-          import("@/components/Admin/PayoutGatewaySetup.vue"),
-        meta: {
-          pageTitle: "Payout Gateway Setup",
-          breadcrumbs: ["Admin", "PayoutGatewaySetup"],
-        },
-      },
-           {
-        path: "/mailers",
-        name: "mailers",
-        component: () =>
-          import("@/components/Admin/Mailers.vue"),
-        meta: {
-          pageTitle: "Mailers",
-          breadcrumbs: ["Admin", "Mailers"],
-        },
-      },
-      {
-        path: "/system-user-management",
-        name: "system-user-management",
-        component: () =>
-          import("@/components/Admin/SystemUserManagement.vue"),
-        meta: {
-          pageTitle: "System User Management",
-          breadcrumbs: ["Admin", "System User Management"],
-        },
-      },
-      {
-        path: "/logs",
-        name: "logs",
-        component: () =>
-          import("@/components/Admin/Logs.vue"),
-        meta: {
-          pageTitle: "Logs",
-          breadcrumbs: ["Admin", "Logs"],
-        },
-      },
-      {
-        path: "/tenant-config",
-        name: "tenant-config",
-        component: () =>
-          import("@/components/Admin/TenantConfig.vue"),
-        meta: {
-          pageTitle: "TenantConfig",
-          breadcrumbs: ["Admin", "Tenant Config"],
-        },
-      },
-      {
-        path: "/push-notifications",
-        name: "push-notifications",
-        component: () =>
-          import("@/components/Admin/PushNotifications.vue"),
-        meta: {
-          pageTitle: "Push Notifications",
-          breadcrumbs: ["Admin", "Push Notifications"],
-        },
-      },
-      {
-        path: "/app-management",
-        name: "app-management",
-        component: () =>
-          import("@/components/Admin/AppManagement.vue"),
-        meta: {
-          pageTitle: "AppManagement",
-          breadcrumbs: ["Admin", "App Management"],
-        },
-      },
+          {
+            path: "/payment-gateway-setup",
+            name: "payment-gateway-setup",
+            component: () =>
+              import("@/components/Admin/PaymentGatewaySetup.vue"),
+            meta: {
+              pageTitle: "Payment Gateway Setup",
+              breadcrumbs: ["Admin", "PaymentGatewaySetup"],
+            },
+          },
+          {
+            path: "/payout-gateway-setup",
+            name: "payout-gateway-setup",
+            component: () =>
+              import("@/components/Admin/PayoutGatewaySetup.vue"),
+            meta: {
+              pageTitle: "Payout Gateway Setup",
+              breadcrumbs: ["Admin", "PayoutGatewaySetup"],
+            },
+          },
+          {
+            path: "/mailers",
+            name: "mailers",
+            component: () => import("@/components/Admin/Mailers.vue"),
+            meta: {
+              pageTitle: "Mailers",
+              breadcrumbs: ["Admin", "Mailers"],
+            },
+          },
+          {
+            path: "/system-user-management",
+            name: "system-user-management",
+            component: () =>
+              import("@/components/Admin/SystemUserManagement.vue"),
+            meta: {
+              pageTitle: "System User Management",
+              breadcrumbs: ["Admin", "System User Management"],
+            },
+          },
+          {
+            path: "/logs",
+            name: "logs",
+            component: () => import("@/components/Admin/Logs.vue"),
+            meta: {
+              pageTitle: "Logs",
+              breadcrumbs: ["Admin", "Logs"],
+            },
+          },
+          {
+            path: "/tenant-config",
+            name: "tenant-config",
+            component: () => import("@/components/Admin/TenantConfig.vue"),
+            meta: {
+              pageTitle: "TenantConfig",
+              breadcrumbs: ["Admin", "Tenant Config"],
+            },
+          },
+          {
+            path: "/push-notifications",
+            name: "push-notifications",
+            component: () => import("@/components/Admin/PushNotifications.vue"),
+            meta: {
+              pageTitle: "Push Notifications",
+              breadcrumbs: ["Admin", "Push Notifications"],
+            },
+          },
+          {
+            path: "/app-management",
+            name: "app-management",
+            component: () => import("@/components/Admin/AppManagement.vue"),
+            meta: {
+              pageTitle: "AppManagement",
+              breadcrumbs: ["Admin", "App Management"],
+            },
+          },
         ],
       },
       //////////////////////////////////////////////////
@@ -318,72 +318,64 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/compliance",
         name: "compliance",
-        component: () =>
-          import("@/views/Compliance.vue"),
+        component: () => import("@/views/Compliance.vue"),
         meta: {
           pageTitle: "Compliance",
           breadcrumbs: ["Compliance"],
-
         },
         children: [
-           {
-        path: "/compliance-individuals",
-        name: "compliance-individuals",
-        component: () =>
-          import("@/components/Compliance/Individuals.vue"),
-        meta: {
-          pageTitle: "Individuals",
-          breadcrumbs: ["Compliance", "Individuals"],
-        },
-      },
-      {
-        path: "/compliance-businesses",
-        name: "compliance-businesses",
-        component: () =>
-          import("@/components/Compliance/Businesses.vue"),
-        meta: {
-          pageTitle: "Business",
-          breadcrumbs: ["Compliance", "Businesses"],
-        },
-      },
+          {
+            path: "/compliance-individuals",
+            name: "compliance-individuals",
+            component: () => import("@/components/Compliance/Individuals.vue"),
+            meta: {
+              pageTitle: "Individuals",
+              breadcrumbs: ["Compliance", "Individuals"],
+            },
+          },
+          {
+            path: "/compliance-businesses",
+            name: "compliance-businesses",
+            component: () => import("@/components/Compliance/Businesses.vue"),
+            meta: {
+              pageTitle: "Business",
+              breadcrumbs: ["Compliance", "Businesses"],
+            },
+          },
         ],
       },
       //////////////////////////////////////////////////
 
       //////////////////////////////////////////////////
       //RISK
-      //////////////////////////////////////////////////      
+      //////////////////////////////////////////////////
       {
         path: "/risk",
         name: "risk",
-        component: () =>
-          import("@/views/Risk.vue"),
+        component: () => import("@/views/Risk.vue"),
         meta: {
           pageTitle: "Risk",
           breadcrumbs: ["Risk"],
-
         },
-         children: [
-           {
-        path: "/risk-individuals",
-        name: "risk-individuals",
-        component: () =>
-          import("@/components/Risk/Individuals.vue"),
-        meta: {
-          pageTitle: "Individuals",
-          breadcrumbs: ["Risk", "Individuals"],
-        },
-      },
-      {
-        path: "/risk-businesses",
-        name: "risk-businesses",
-        component: () =>
-          import("@/components/Risk/Businesses.vue"),
-        meta: {
-          pageTitle: "Businesses",
-          breadcrumbs: ["Risk", "Businesses"],
-        },
-      },
+        children: [
+          {
+            path: "/risk-individuals",
+            name: "risk-individuals",
+            component: () => import("@/components/Risk/Individuals.vue"),
+            meta: {
+              pageTitle: "Individuals",
+              breadcrumbs: ["Risk", "Individuals"],
+            },
+          },
+          {
+            path: "/risk-businesses",
+            name: "risk-businesses",
+            component: () => import("@/components/Risk/Businesses.vue"),
+            meta: {
+              pageTitle: "Businesses",
+              breadcrumbs: ["Risk", "Businesses"],
+            },
+          },
         ],
       },
       //////////////////////////////////////////////////
@@ -394,34 +386,30 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/payment-methods",
         name: "payment-methods",
-        component: () =>
-          import("@/views/PaymentMethods.vue"),
+        component: () => import("@/views/PaymentMethods.vue"),
         meta: {
           pageTitle: "Payment Methods",
           breadcrumbs: ["Payment Methods"],
-
         },
         children: [
-           {
-        path: "/cards",
-        name: "cards",
-        component: () =>
-          import("@/components/PaymentMethods/Cards.vue"),
-        meta: {
-          pageTitle: "Cards",
-          breadcrumbs: ["Payment Methods", "Cards"],
-        },
-      },
-      {
-        path: "/ach",
-        name: "ach",
-        component: () =>
-          import("@/components/PaymentMethods/ACH.vue"),
-        meta: {
-          pageTitle: "ACH",
-          breadcrumbs: ["Payment Methods", "ACH"],
-        },
-      },
+          {
+            path: "/cards",
+            name: "cards",
+            component: () => import("@/components/PaymentMethods/Cards.vue"),
+            meta: {
+              pageTitle: "Cards",
+              breadcrumbs: ["Payment Methods", "Cards"],
+            },
+          },
+          {
+            path: "/ach",
+            name: "ach",
+            component: () => import("@/components/PaymentMethods/ACH.vue"),
+            meta: {
+              pageTitle: "ACH",
+              breadcrumbs: ["Payment Methods", "ACH"],
+            },
+          },
         ],
       },
 
@@ -433,39 +421,27 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/transaction-monitoring",
         name: "transaction-monitoring",
-        component: () =>
-          import("@/views/TransactionMonitoring.vue"),
+        component: () => import("@/views/TransactionMonitoring.vue"),
         meta: {
           pageTitle: "Transaction Monitoring",
           breadcrumbs: ["Transaction Monitoring"],
-
         },
         children: [
-           {
-        path: "/monitored-transactions",
-        name: "monitored-transactions",
-        component: () =>
-          import("@/components/TransactionMonitoring/MonitoredTransactions.vue"),
-        meta: {
-          pageTitle: "Monitored Transactions",
-          breadcrumbs: ["Transaction Monitoring", "Monitored Transactions"],
-        },
-      },
+          {
+            path: "/monitored-transactions",
+            name: "monitored-transactions",
+            component: () =>
+              import(
+                "@/components/TransactionMonitoring/MonitoredTransactions.vue"
+              ),
+            meta: {
+              pageTitle: "Monitored Transactions",
+              breadcrumbs: ["Transaction Monitoring", "Monitored Transactions"],
+            },
+          },
         ],
       },
       //////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
 
       {
         path: "/crafted/pages/profile",
@@ -908,7 +884,6 @@ const routes: Array<RouteRecordRaw> = [
     path: "/:pathMatch(.*)*",
     redirect: "/404",
   },
- 
 ];
 
 const router = createRouter({
